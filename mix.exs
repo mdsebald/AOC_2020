@@ -1,9 +1,9 @@
-defmodule Day01.MixProject do
+defmodule Aoc2020.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :day01,
+      app: :aoc_2020,
       version: "0.1.0",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
