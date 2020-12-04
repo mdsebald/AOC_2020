@@ -1,8 +1,12 @@
 defmodule Aoc2020Test do
   use ExUnit.Case
 
-  test "Day 01 fix_expense_report" do
-    assert Day01.fix_expense_report
+  test "Day 01 fix_expense_report_1" do
+    assert Day01.fix_expense_report_1 == 436404
+  end
+
+  test "Day 01 fix_expense_report_2" do
+    assert Day01.fix_expense_report_2 == 274879808
   end
 
   test "Day 02 count_valid_sled_passwords" do
@@ -28,5 +32,4 @@ defmodule Aoc2020Test do
   test "Day 04 validate_passports_2" do
     assert Day04.count_valid_passports_2 == 133
   end
-
 end
