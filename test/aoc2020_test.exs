@@ -21,4 +21,12 @@ defmodule Aoc2020Test do
     assert Day03.check_multiple_slopes == 1574890240
   end
 
+  test "Day 04 validate_passports_1" do
+    assert Day04.count_valid_passports_1 == 245
+  end
+
+  test "Day 04 validate_passports_2" do
+    assert Day04.count_valid_passports_2 == 133
+  end
+
 end
