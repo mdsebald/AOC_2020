@@ -96,7 +96,7 @@ defmodule Day01 do
   end
 
   defp get_expense_list do
-    File.read!("day01_input.txt")
+    File.read!("inputs/day01_input.txt")
     |> String.split()
     |> Enum.map(&String.to_integer/1)
     # Don't think AOC committee would give us bad data, but doesn't hurt to check

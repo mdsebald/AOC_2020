@@ -117,6 +117,6 @@ defmodule Day03 do
   end
 
   defp get_tree_lines do
-    File.read!("day03_input.txt") |> String.split()
+    File.read!("inputs/day03_input.txt") |> String.split()
   end
 end

@@ -19,7 +19,7 @@ defmodule Day02 do
   2-9 c: ccccccccc is invalid: both position 2 and position 9 contain c.
   """
   def count_valid_toboggan_passwords do
-    File.read!("day02_input.txt")
+    File.read!("inputs/day02_input.txt")
     |> String.split("\n")
     |> Enum.map(&String.split/1)
     |> Enum.reduce(0, fn policy_password, valid_cnt ->
@@ -77,7 +77,7 @@ defmodule Day02 do
   In the above example, 2 passwords are valid. The middle password, cdefg, is not; it contains no instances of b, but needs at least 1. The first and third passwords are valid: they contain one a or nine c, both within the limits of their respective policies.
   """
   def count_valid_sled_passwords do
-    File.read!("day02_input.txt")
+    File.read!("inputs/day02_input.txt")
     |> String.split("\n")
     |> Enum.map(&String.split/1)
     |> Enum.reduce(0, fn policy_password, valid_cnt ->

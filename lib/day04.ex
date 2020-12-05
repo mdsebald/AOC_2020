@@ -141,7 +141,7 @@ defmodule Day04 do
   end
 
   defp get_passports do
-    File.read!("day04_input.txt")
+    File.read!("inputs/day04_input.txt")
     |> String.split("\n")
     # Group each individual's passport data strings into one list.
     # There is a blank string between each individual's passport data

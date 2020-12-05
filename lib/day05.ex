@@ -70,7 +70,7 @@ defmodule Day05 do
   end
 
   defp get_sorted_seat_ids do
-    File.read!("day05_input.txt")
+    File.read!("inputs/day05_input.txt")
     |> String.split()
     |> Enum.map(&binary_to_seat_id/1)
     |> Enum.sort(&(&1 < &2))
