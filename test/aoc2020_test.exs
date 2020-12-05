@@ -18,11 +18,11 @@ defmodule Aoc2020Test do
   end
 
   test "Day 03 tree encounter" do
-    assert Day03.tree_encounter() == 209
+    assert Day03.trees_encountered_r3d1() == 209
   end
 
   test "Day 03 check multiple slopes" do
-    assert Day03.check_multiple_slopes() == 1_574_890_240
+    assert Day03.trees_encountered_multiple_slopes() == 1_574_890_240
   end
 
   test "Day 04 validate passports 1" do

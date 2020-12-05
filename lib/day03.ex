@@ -33,9 +33,9 @@ defmodule Day03 do
 
   Starting at the top-left corner of your map and following a slope of right 3 and down 1, how many trees would you encounter?
   """
-  def tree_encounter do
-    tree_lines = File.read!("day03_input.txt") |> String.split()
-    count_trees(tree_lines, 3, 1, 0, 0, 0)
+  def trees_encountered_r3d1 do
+    get_tree_lines()
+    |> count_trees(3, 1)
   end
 
   @doc """
@@ -54,15 +54,19 @@ defmodule Day03 do
 
   What do you get if you multiply together the number of trees encountered on each of the listed slopes?
   """
-  def check_multiple_slopes do
-    tree_lines = File.read!("day03_input.txt") |> String.split()
-    trees1 = count_trees(tree_lines, 1, 1, 0, 0, 0)
-    trees2 = count_trees(tree_lines, 3, 1, 0, 0, 0)
-    trees3 = count_trees(tree_lines, 5, 1, 0, 0, 0)
-    trees4 = count_trees(tree_lines, 7, 1, 0, 0, 0)
-    trees5 = count_trees(tree_lines, 1, 2, 0, 0, 0)
+  def trees_encountered_multiple_slopes do
+    tree_lines = get_tree_lines()
+    trees1 = count_trees(tree_lines, 1, 1)
+    trees2 = count_trees(tree_lines, 3, 1)
+    trees3 = count_trees(tree_lines, 5, 1)
+    trees4 = count_trees(tree_lines, 7, 1)
+    trees5 = count_trees(tree_lines, 1, 2)
     # result is the product of all tree counts
     trees1 * trees2 * trees3 * trees4 * trees5
+  end
+
+  defp count_trees(tree_lines, slope_right, slope_down) do
+    count_trees(tree_lines, slope_right, slope_down, 0, 0, 0)
   end
 
   defp count_trees([], _slope_right, _slope_down, _right_pos, _down_pos, tree_count),
@@ -110,5 +114,9 @@ defmodule Day03 do
       # no tree
       _ -> false
     end
+  end
+
+  defp get_tree_lines do
+    File.read!("day03_input.txt") |> String.split()
   end
 end
