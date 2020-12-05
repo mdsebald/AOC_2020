@@ -1,9 +1,10 @@
 defmodule Day05 do
+  @moduledoc """
+  --- Day 5: Binary Boarding ---
+  """
 
   @doc """
-  Day 05: Binary Boarding
-
-  Part 1:
+  --- Part One ---
 
   this airline uses binary space partitioning to seat people. A seat might be specified like FBFBBFFRLR, where F means "front", B means "back", L means "left", and R means "right".
 
@@ -41,11 +42,12 @@ defmodule Day05 do
 
   def find_highest_seat_id do
     get_sorted_seat_ids()
-    |> List.last
+    |> List.last()
   end
 
   @doc """
   --- Part Two ---
+
   Ding! The "fasten seat belt" signs have turned on. Time to find your seat.
 
   It's a completely full flight, so your seat should be the only missing boarding pass in your list.
@@ -59,17 +61,17 @@ defmodule Day05 do
   def find_your_seat_id do
     get_sorted_seat_ids()
     |> Enum.reduce_while(0, fn seat_id, last_seat_id ->
-                      if (last_seat_id == 0) || ((last_seat_id + 1) == seat_id) do
-                        {:cont, seat_id}
-                      else
-                        {:halt, last_seat_id + 1}
-                      end
-                end)
+      if last_seat_id == 0 || last_seat_id + 1 == seat_id do
+        {:cont, seat_id}
+      else
+        {:halt, last_seat_id + 1}
+      end
+    end)
   end
 
   defp get_sorted_seat_ids do
     File.read!("day05_input.txt")
-    |> String.split
+    |> String.split()
     |> Enum.map(&binary_to_seat_id/1)
     |> Enum.sort(&(&1 < &2))
   end
@@ -77,11 +79,11 @@ defmodule Day05 do
   defp binary_to_seat_id(binary_space_part) do
     String.to_charlist(binary_space_part)
     |> Enum.reduce(0, fn bin, seat_id ->
-                        if (bin == ?B || bin ==?R) do
-                          (seat_id * 2) + 1
-                        else
-                          (seat_id * 2)
-                        end
-                      end)
+      if bin == ?B || bin == ?R do
+        seat_id * 2 + 1
+      else
+        seat_id * 2
+      end
+    end)
   end
 end

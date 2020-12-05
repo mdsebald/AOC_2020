@@ -1,11 +1,10 @@
 defmodule Day01 do
-
   @moduledoc """
-  Documentation for `Day01`.
+  --- Day 1: Report Repair ---
   """
 
   @doc """
-  Part 1
+  --- Part One ---
 
   Before you leave, the Elves in accounting just need you to fix your expense report (your puzzle input);
   apparently, something isn't quite adding up.
@@ -39,18 +38,19 @@ defmodule Day01 do
     # Return true if it equals 2020
     # Doesn't hurt if more than one expense pair equals 2020.
     # It just uses the first expense that matches
-    exps_2020_list = Enum.filter(rem_exps, fn second_exp -> (first_exp + second_exp) == 2020 end)
-    if (length(exps_2020_list) >= 1) do
+    exps_2020_list = Enum.filter(rem_exps, fn second_exp -> first_exp + second_exp == 2020 end)
+    # keep looking
+    if length(exps_2020_list) >= 1 do
       IO.puts("First: #{first_exp} Second: #{List.first(exps_2020_list)}")
       # return the product of the two expenses that add up to 2020
-      (first_exp * List.first(exps_2020_list))
-    else # keep looking
+      first_exp * List.first(exps_2020_list)
+    else
       find_2020_exp_pair(rem_exps)
     end
   end
 
   @doc """
-  Part 2
+  --- Part Two ---
 
   Find three numbers in your expense report that meet the same criteria.
 
@@ -70,9 +70,10 @@ defmodule Day01 do
 
   defp find_2020_exp_triplet([first_exp | rem_exps]) do
     result = sum_first_with_next_pairs(first_exp, rem_exps)
-    if (result > 0) do
+
+    if result > 0 do
       result
-    else # keep looking
+    else
       find_2020_exp_triplet(rem_exps)
     end
   end
@@ -82,21 +83,23 @@ defmodule Day01 do
   end
 
   defp sum_first_with_next_pairs(first_exp, [second_exp | rem_exps]) do
-    exps_2020_list = Enum.filter(rem_exps, fn third_exp -> (first_exp + second_exp + third_exp) == 2020 end)
-    if (length(exps_2020_list) >= 1) do
+    exps_2020_list =
+      Enum.filter(rem_exps, fn third_exp -> first_exp + second_exp + third_exp == 2020 end)
+
+    if length(exps_2020_list) >= 1 do
       IO.puts("First: #{first_exp} Second: #{second_exp} Third: #{List.first(exps_2020_list)}")
       # return the product of the three expenses that add up to 2020
-      (first_exp * second_exp * List.first(exps_2020_list))
-    else # keep looking.
+      first_exp * second_exp * List.first(exps_2020_list)
+    else
       sum_first_with_next_pairs(first_exp, rem_exps)
     end
   end
 
   defp get_expense_list do
     File.read!("day01_input.txt")
-    |> String.split
+    |> String.split()
     |> Enum.map(&String.to_integer/1)
     # Don't think AOC committee would give us bad data, but doesn't hurt to check
-    |> Enum.filter(fn exp -> ((0 <= exp) && (exp <= 2020)) end)
+    |> Enum.filter(fn exp -> 0 <= exp && exp <= 2020 end)
   end
 end

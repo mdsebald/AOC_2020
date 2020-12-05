@@ -1,9 +1,11 @@
 defmodule Day02 do
   @moduledoc """
-  Documentation for `Day02`.
+  --- Day 2: Password Philosophy ---
   """
 
   @doc """
+  --- Part One ---
+
   The Official Toboggan Corporate Password Policy
 
   Each policy actually describes two positions in the password, where 1 means the first character, 2 means the second character, and so on.
@@ -21,29 +23,33 @@ defmodule Day02 do
     |> String.split("\n")
     |> Enum.map(&String.split/1)
     |> Enum.reduce(0, fn policy_password, valid_cnt ->
-        if valid_toboggan_password?(policy_password) do
-          valid_cnt + 1
-        else
-          valid_cnt
-        end
-      end)
+      if valid_toboggan_password?(policy_password) do
+        valid_cnt + 1
+      else
+        valid_cnt
+      end
+    end)
   end
 
   defp valid_toboggan_password?([]), do: false
 
-  defp valid_toboggan_password?([repeat_range, pw_char_str, password]) when is_binary(repeat_range) and is_binary(pw_char_str) and is_binary(password) do
+  defp valid_toboggan_password?([repeat_range, pw_char_str, password])
+       when is_binary(repeat_range) and is_binary(pw_char_str) and is_binary(password) do
     case parse_repeat_range(repeat_range) do
       {first_position, second_position} ->
         pw_char = parse_pw_char(pw_char_str)
         # normalize to zero based index
-        first_match = (pw_char == String.at(password, first_position - 1))
-        second_match = (pw_char == String.at(password, second_position - 1))
-        if  (first_match && !second_match) || (!first_match && second_match) do
+        first_match = pw_char == String.at(password, first_position - 1)
+        second_match = pw_char == String.at(password, second_position - 1)
+
+        if (first_match && !second_match) || (!first_match && second_match) do
           true
         else
           false
         end
-      _error -> print_error("Error parsing repeat range")
+
+      _error ->
+        print_error("Error parsing repeat range")
     end
   end
 
@@ -53,6 +59,8 @@ defmodule Day02 do
   end
 
   @doc """
+  --- Part Two ---
+
   Old Sled Rental Password Policy
 
   To try to debug the problem, they have created a list (your puzzle input) of passwords (according to the corrupted database) and the corporate policy when that password was set.
@@ -73,27 +81,31 @@ defmodule Day02 do
     |> String.split("\n")
     |> Enum.map(&String.split/1)
     |> Enum.reduce(0, fn policy_password, valid_cnt ->
-        if valid_sled_password?(policy_password) do
-          valid_cnt + 1
-        else
-          valid_cnt
-        end
-      end)
+      if valid_sled_password?(policy_password) do
+        valid_cnt + 1
+      else
+        valid_cnt
+      end
+    end)
   end
 
   defp valid_sled_password?([]), do: false
 
-  defp valid_sled_password?([repeat_range, pw_char_str, password]) when is_binary(repeat_range) and is_binary(pw_char_str) and is_binary(password) do
+  defp valid_sled_password?([repeat_range, pw_char_str, password])
+       when is_binary(repeat_range) and is_binary(pw_char_str) and is_binary(password) do
     case parse_repeat_range(repeat_range) do
       {min_repeat, max_repeat} ->
         pw_char = parse_pw_char(pw_char_str)
         pw_char_count = count_pw_chars(password, pw_char)
-        if (min_repeat <= pw_char_count) && (pw_char_count <= max_repeat) do
+
+        if min_repeat <= pw_char_count && pw_char_count <= max_repeat do
           true
         else
           false
         end
-      _error -> print_error("Error parsing repeat range")
+
+      _error ->
+        print_error("Error parsing repeat range")
     end
   end
 
@@ -109,21 +121,31 @@ defmodule Day02 do
           {:ok, min_repeat} ->
             case parse_repeat_val(max_repeat_str) do
               {:ok, max_repeat} ->
-                case (0 < min_repeat) && (min_repeat < max_repeat) do
-                  true -> {min_repeat, max_repeat}
-                  false -> print_error("Invalid repeat value(s): Min: #{min_repeat} Max: #{max_repeat}")
+                case 0 < min_repeat && min_repeat < max_repeat do
+                  true ->
+                    {min_repeat, max_repeat}
+
+                  false ->
+                    print_error("Invalid repeat value(s): Min: #{min_repeat} Max: #{max_repeat}")
                 end
-              _error -> print_error("Invalid max repeat range: #{repeat_range}")
+
+              _error ->
+                print_error("Invalid max repeat range: #{repeat_range}")
             end
-          _error -> print_error("Invalid min repeat range: #{repeat_range}")
+
+          _error ->
+            print_error("Invalid min repeat range: #{repeat_range}")
         end
-      _error -> print_error("Invalid repeat range format: #{repeat_range}")
+
+      _error ->
+        print_error("Invalid repeat range format: #{repeat_range}")
     end
   end
 
-  @spec parse_repeat_val(String.t) :: {:ok, integer()} | :error
+  @spec parse_repeat_val(String.t()) :: {:ok, integer()} | :error
   defp parse_repeat_val(repeat_str) do
     repeat_val = String.to_integer(repeat_str)
+
     if repeat_val > 0 do
       {:ok, repeat_val}
     else
@@ -136,10 +158,10 @@ defmodule Day02 do
   end
 
   defp count_pw_chars(str, pw_char) do
-    str |> String.graphemes |> Enum.count(fn(c) -> c == pw_char end)
+    str |> String.graphemes() |> Enum.count(fn c -> c == pw_char end)
   end
 
-  @spec print_error(String.t) :: :error
+  @spec print_error(String.t()) :: :error
   defp print_error(error_str) do
     IO.puts(error_str)
     IO.puts("\n")

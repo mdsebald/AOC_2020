@@ -1,7 +1,12 @@
 defmodule Day04 do
+  @moduledoc """
+  --- Day 4: Passport Processing ---
+  """
 
   @doc """
-  Day 04 - Part 1: Detect which passports have all required fields. The expected fields are as follows:
+  --- Part One ---
+
+  Detect which passports have all required fields. The expected fields are as follows:
 
   byr (Birth Year)
   iyr (Issue Year)
@@ -41,17 +46,25 @@ defmodule Day04 do
   Count the number of valid passports - those that have all required fields. Treat cid as optional. In your batch file, how many passports are valid?
   """
   def count_valid_passports_1 do
-     get_passports()
-     |> Enum.reduce(0, fn pp_map, count -> if valid_passport_1?(pp_map) do count + 1 else count end end)
+    get_passports()
+    |> Enum.reduce(0, fn pp_map, count ->
+      if valid_passport_1?(pp_map) do
+        count + 1
+      else
+        count
+      end
+    end)
   end
 
   defp valid_passport_1?(pp_map) do
     pp_field_count = map_size(pp_map)
-    (pp_field_count == 8) || ((pp_field_count == 7) && !Map.has_key?(pp_map, :cid))
+    pp_field_count == 8 || (pp_field_count == 7 && !Map.has_key?(pp_map, :cid))
   end
 
   @doc """
-  Day 04 - Part 2: Add some data validation.
+  --- Part Two ---
+
+  Add some data validation.
 
   You can continue to ignore the cid field, but each other field has strict rules about what values are valid for automatic validation:
 
@@ -118,7 +131,13 @@ defmodule Day04 do
   """
   def count_valid_passports_2 do
     get_passports()
-    |> Enum.reduce(0, fn pp_map, count -> if valid_passport_2(pp_map) do count + 1 else count end end)
+    |> Enum.reduce(0, fn pp_map, count ->
+      if valid_passport_2(pp_map) do
+        count + 1
+      else
+        count
+      end
+    end)
   end
 
   defp get_passports do
@@ -138,19 +157,19 @@ defmodule Day04 do
   defp map_passport(pp_str) do
     String.split(pp_str)
     |> Map.new(fn kv_str ->
-                [key_str, value] = String.split(kv_str, ":")
-                {String.to_atom(key_str), value}
-              end)
+      [key_str, value] = String.split(kv_str, ":")
+      {String.to_atom(key_str), value}
+    end)
   end
 
   defp valid_passport_2(pp_map) do
-    if (byr_valid?(pp_map) &&
-        iyr_valid?(pp_map) &&
-        eyr_valid?(pp_map) &&
-        hgt_valid?(pp_map) &&
-        hcl_valid?(pp_map) &&
-        ecl_valid?(pp_map) &&
-        pid_valid?(pp_map)) do
+    if byr_valid?(pp_map) &&
+         iyr_valid?(pp_map) &&
+         eyr_valid?(pp_map) &&
+         hgt_valid?(pp_map) &&
+         hcl_valid?(pp_map) &&
+         ecl_valid?(pp_map) &&
+         pid_valid?(pp_map) do
       true
     else
       false
@@ -181,19 +200,22 @@ defmodule Day04 do
   defp valid_year?(year_str, min_year, max_year) do
     case Integer.parse(year_str) do
       :error -> false
-      {year, ""} -> (min_year <= year) && (year <= max_year)
+      {year, ""} -> min_year <= year && year <= max_year
       _invalid_year_str -> false
     end
   end
 
   defp hgt_valid?(pp_map) do
     case Map.get(pp_map, :hgt) do
-      nil -> false
+      nil ->
+        false
+
       hgt_str ->
         {hgt, units} = Integer.parse(hgt_str)
+
         case units do
-          "cm" -> (150 <= hgt) && (hgt <= 193)
-          "in" -> (59 <= hgt) && (hgt <= 76)
+          "cm" -> 150 <= hgt && hgt <= 193
+          "in" -> 59 <= hgt && hgt <= 76
           _invalid_units -> false
         end
     end
