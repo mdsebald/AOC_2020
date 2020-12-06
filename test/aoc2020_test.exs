@@ -40,4 +40,12 @@ defmodule Aoc2020Test do
   test "Day 05 find your seat id" do
     assert Day05.find_your_seat_id() == 587
   end
+
+  test "Day 06 sum each group's unique yes answers" do
+    assert Day06.sum_each_groups_unique_yes_answers() == 6748
+  end
+
+  test "Day 06 sum each group's common yes answers" do
+    assert Day06.sum_each_groups_common_yes_answers() == 3445
+  end
 end
