@@ -48,4 +48,12 @@ defmodule Aoc2020Test do
   test "Day 06 sum each group's common yes answers" do
     assert Day06.sum_each_groups_common_yes_answers() == 3445
   end
+
+  test "Day 07 Quantity of outer bags that contain at least one shiny gold bag" do
+    assert Day07.qty_bag_colors_contain_shiny_gold() == 161
+  end
+
+  test "Day 07 Quantity of bags contained in one shiny gold bag" do
+    assert Day07.qty_bags_contained_in_shiny_gold_bag() == 30899
+  end
 end
