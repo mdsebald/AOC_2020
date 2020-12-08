@@ -56,4 +56,12 @@ defmodule Aoc2020Test do
   test "Day 07 Quantity of bags contained in one shiny gold bag" do
     assert Day07.qty_bags_contained_in_shiny_gold_bag() == 30899
   end
+
+  test "Day 08 Get accumulator value before infinite loop" do
+    assert Day08.get_acc_before_loop() == {:loop, 1179}
+  end
+
+  test "Day 08 Fix program and get accumulator value" do
+    assert Day08.fix_program_and_get_acc() == 1089
+  end
 end
