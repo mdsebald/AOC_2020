@@ -41,7 +41,7 @@ defmodule Day01 do
     exps_2020_list = Enum.filter(rem_exps, fn second_exp -> first_exp + second_exp == 2020 end)
     # keep looking
     if length(exps_2020_list) >= 1 do
-      IO.puts("First: #{first_exp} Second: #{List.first(exps_2020_list)}")
+      # IO.puts("First: #{first_exp} Second: #{List.first(exps_2020_list)}")
       # return the product of the two expenses that add up to 2020
       first_exp * List.first(exps_2020_list)
     else
