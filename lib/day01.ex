@@ -29,22 +29,19 @@ defmodule Day01 do
     |> find_2020_exp_pair
   end
 
-  defp find_2020_exp_pair([_last_exp]) do
-    IO.puts("No 2020 expense pair detected\n")
-  end
-
   defp find_2020_exp_pair([first_exp | rem_exps]) do
     # Add the first expense to each remaining expense in the list.
     # Return true if it equals 2020
     # Doesn't hurt if more than one expense pair equals 2020.
     # It just uses the first expense that matches
     exps_2020_list = Enum.filter(rem_exps, fn second_exp -> first_exp + second_exp == 2020 end)
-    # keep looking
+
     if length(exps_2020_list) >= 1 do
       # IO.puts("First: #{first_exp} Second: #{List.first(exps_2020_list)}")
       # return the product of the two expenses that add up to 2020
       first_exp * List.first(exps_2020_list)
     else
+      # keep looking
       find_2020_exp_pair(rem_exps)
     end
   end
@@ -62,10 +59,6 @@ defmodule Day01 do
   def fix_expense_report_2 do
     get_expense_list()
     |> find_2020_exp_triplet
-  end
-
-  defp find_2020_exp_triplet(exps_list) when length(exps_list) <= 2 do
-    IO.puts("No 2020 expense triplet detected")
   end
 
   defp find_2020_exp_triplet([first_exp | rem_exps]) do
@@ -95,11 +88,11 @@ defmodule Day01 do
     end
   end
 
+  # common functions
+
   defp get_expense_list do
     File.read!("inputs/day01_input.txt")
     |> String.split()
     |> Enum.map(&String.to_integer/1)
-    # Don't think AOC committee would give us bad data, but doesn't hurt to check
-    |> Enum.filter(fn exp -> 0 <= exp && exp <= 2020 end)
   end
 end
