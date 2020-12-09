@@ -87,7 +87,7 @@ defmodule Day01 do
       Enum.filter(rem_exps, fn third_exp -> first_exp + second_exp + third_exp == 2020 end)
 
     if length(exps_2020_list) >= 1 do
-      IO.puts("First: #{first_exp} Second: #{second_exp} Third: #{List.first(exps_2020_list)}")
+      # IO.puts("First: #{first_exp} Second: #{second_exp} Third: #{List.first(exps_2020_list)}")
       # return the product of the three expenses that add up to 2020
       first_exp * second_exp * List.first(exps_2020_list)
     else

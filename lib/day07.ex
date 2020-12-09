@@ -5,6 +5,7 @@ defmodule Day07 do
 
   @doc """
   --- Part One ---
+
   Due to recent aviation regulations, many rules (your puzzle input) are being enforced about bags and their contents;
   bags must be color-coded and must contain specific quantities of other color-coded bags.
   Apparently, nobody responsible for these regulations considered how long they would take to enforce!
@@ -120,6 +121,7 @@ defmodule Day07 do
 
   @doc """
   --- Part Two ---
+
   It's getting pretty expensive to fly these days -
   not because of ticket prices, but because of the ridiculous number of bags you need to buy!
 

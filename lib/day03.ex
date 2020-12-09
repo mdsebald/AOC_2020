@@ -6,8 +6,6 @@ defmodule Day03 do
   @doc """
   --- Part One ---
 
-  Toboggan Trajectory
-
   You start on the open square (.) in the top-left corner and need to reach the bottom (below the bottom-most row on your map).
 
   The toboggan can only follow a few specific slopes (you opted for a cheaper model that prefers rational numbers);
@@ -64,6 +62,8 @@ defmodule Day03 do
     # result is the product of all tree counts
     trees1 * trees2 * trees3 * trees4 * trees5
   end
+
+  # common functions
 
   defp count_trees(tree_lines, slope_right, slope_down) do
     count_trees(tree_lines, slope_right, slope_down, 0, 0, 0)

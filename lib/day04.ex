@@ -37,7 +37,8 @@ defmodule Day04 do
   iyr:2011 ecl:brn hgt:59in
   The first passport is valid - all eight fields are present. The second passport is invalid - it is missing hgt (the Height field).
 
-  The third passport is interesting; the only missing field is cid, so it looks like data from North Pole Credentials, not a passport at all! Surely, nobody would mind if you made the system temporarily ignore missing cid fields. Treat this "passport" as valid.
+  The third passport is interesting; the only missing field is cid, so it looks like data from North Pole Credentials, not a passport at all!
+  Surely, nobody would mind if you made the system temporarily ignore missing cid fields. Treat this "passport" as valid.
 
   The fourth passport is missing two fields, cid and byr. Missing cid is fine, but missing any other field is not, so this passport is invalid.
 
@@ -140,28 +141,6 @@ defmodule Day04 do
     end)
   end
 
-  defp get_passports do
-    File.read!("inputs/day04_input.txt")
-    |> String.split("\n")
-    # Group each individual's passport data strings into one list.
-    # There is a blank string between each individual's passport data
-    |> Enum.chunk_by(fn pp_str -> String.length(pp_str) > 0 end)
-    # Delete the lists that only contain a blank string
-    |> Enum.filter(fn pp_str_list -> String.length(Enum.at(pp_str_list, 0)) > 0 end)
-    # Concatonate each list of strings into one string of passport data
-    |> Enum.map(fn pp_str_list -> Enum.join(pp_str_list, " ") end)
-    |> Enum.map(&map_passport/1)
-  end
-
-  # Convert string of passport data to a key/value map
-  defp map_passport(pp_str) do
-    String.split(pp_str)
-    |> Map.new(fn kv_str ->
-      [key_str, value] = String.split(kv_str, ":")
-      {String.to_atom(key_str), value}
-    end)
-  end
-
   defp valid_passport_2(pp_map) do
     if byr_valid?(pp_map) &&
          iyr_valid?(pp_map) &&
@@ -242,5 +221,29 @@ defmodule Day04 do
       nil -> false
       pid -> Regex.match?(~r/^[0-9]{9}$/, pid)
     end
+  end
+
+  # common functions
+
+  defp get_passports do
+    File.read!("inputs/day04_input.txt")
+    |> String.split("\n")
+    # Group each individual's passport data strings into one list.
+    # There is a blank string between each individual's passport data
+    |> Enum.chunk_by(fn pp_str -> String.length(pp_str) > 0 end)
+    # Delete the lists that only contain a blank string
+    |> Enum.filter(fn pp_str_list -> String.length(Enum.at(pp_str_list, 0)) > 0 end)
+    # Concatonate each list of strings into one string of passport data
+    |> Enum.map(fn pp_str_list -> Enum.join(pp_str_list, " ") end)
+    |> Enum.map(&map_passport/1)
+  end
+
+  # Convert string of passport data to a key/value map
+  defp map_passport(pp_str) do
+    String.split(pp_str)
+    |> Map.new(fn kv_str ->
+      [key_str, value] = String.split(kv_str, ":")
+      {String.to_atom(key_str), value}
+    end)
   end
 end
