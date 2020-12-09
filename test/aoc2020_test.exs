@@ -64,4 +64,12 @@ defmodule Aoc2020Test do
   test "Day 08 Fix program and get accumulator value" do
     assert Day08.fix_program_and_get_acc() == 1089
   end
+
+  test "Day 09 Find first invalid XMAS number" do
+    assert Day09.find_first_non_xmas_number() == 105_950_735
+  end
+
+  test "Day 09 Find XMAS encryption weakness" do
+    assert Day09.find_encryption_weakness() == 13_826_915
+  end
 end
