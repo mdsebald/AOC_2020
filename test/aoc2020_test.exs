@@ -72,4 +72,12 @@ defmodule Aoc2020Test do
   test "Day 09 Find XMAS encryption weakness" do
     assert Day09.find_encryption_weakness() == 13_826_915
   end
+
+  test "Day 10 Count joltage adapter differences" do
+    assert Day10.count_joltage_adapter_differences() == 2592
+  end
+
+  test "Day 10 Count valid adapter sequnces" do
+    assert Day10.count_valid_adapter_sequences() == 198_428_693_313_536
+  end
 end
