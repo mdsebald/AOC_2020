@@ -80,4 +80,12 @@ defmodule Aoc2020Test do
   test "Day 10 Count valid adapter sequnces" do
     assert Day10.count_valid_adapter_sequences() == 198_428_693_313_536
   end
+
+  test "Day 11 Count final number of ferry seats occupied part 1" do
+    assert Day11.final_seats_occupied1() == 2427
+  end
+
+  test "Day 11 Count final number of ferry seats occupied part 2" do
+    assert Day11.final_seats_occupied2() == 2199
+  end
 end
