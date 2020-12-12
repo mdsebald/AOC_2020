@@ -77,15 +77,23 @@ defmodule Aoc2020Test do
     assert Day10.count_joltage_adapter_differences() == 2592
   end
 
-  test "Day 10 Count valid adapter sequnces" do
+  test "Day 10 Count valid adapter sequences" do
     assert Day10.count_valid_adapter_sequences() == 198_428_693_313_536
   end
 
-  test "Day 11 Count final number of ferry seats occupied part 1" do
+  test "Day 11 Count final number of ferry seats occupied, Part 1" do
     assert Day11.final_seats_occupied1() == 2427
   end
 
-  test "Day 11 Count final number of ferry seats occupied part 2" do
+  test "Day 11 Count final number of ferry seats occupied, Part 2" do
     assert Day11.final_seats_occupied2() == 2199
+  end
+
+  test "Day 12 Find Manhatten distance, Part 1" do
+    assert Day12.find_manhatten_distance_1() == 2458
+  end
+
+  test "Day 12 Find Manhatten distance, Part 2" do
+    assert Day12.find_manhatten_distance_2() == 145_117
   end
 end
