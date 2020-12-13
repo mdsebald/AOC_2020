@@ -96,4 +96,12 @@ defmodule Aoc2020Test do
   test "Day 12 Find Manhatten distance, Part 2" do
     assert Day12.find_manhatten_distance_2() == 145_117
   end
+
+  test "Day 13 Get the earliest bus" do
+    assert Day13.get_earliest_bus() == 5946
+  end
+
+  test "Day 13 Get the earliest timestamp" do
+    assert Day13.get_earliest_timestamp() == 645_338_524_823_718
+  end
 end
