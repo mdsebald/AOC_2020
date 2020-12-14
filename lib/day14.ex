@@ -60,7 +60,6 @@ defmodule Day14 do
   """
 
   def mem_sum_after_init_1 do
-    # "inputs/day14_test1_input.txt")
     {processed_instr, _last_mask} =
       get_init_program()
       |> Enum.map_reduce([], fn instr, mask -> process_instr_1(instr, mask) end)
@@ -220,9 +219,7 @@ defmodule Day14 do
       end)
 
     # then generate the list of affected addresses
-    affected_addrs = gen_addrs(mask, 1, [mod_addr])
-    # IO.puts("#{mask}, #{addr}, #{mod_addr}, #{inspect(affected_addrs)}")
-    affected_addrs
+    gen_addrs(mask, 1, [mod_addr])
   end
 
   defp gen_addrs([], _mult, mod_addrs), do: mod_addrs
