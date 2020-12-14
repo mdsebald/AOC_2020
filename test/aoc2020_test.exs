@@ -104,4 +104,12 @@ defmodule Aoc2020Test do
   test "Day 13 Get the earliest timestamp" do
     assert Day13.get_earliest_timestamp() == 645_338_524_823_718
   end
+
+  test "Day 14 Sum memory values after initialization, Part 1" do
+    assert Day14.mem_sum_after_init_1() == 9_296_748_256_641
+  end
+
+  test "Day 14 Sum memory values after initialization, Part 2" do
+    assert Day14.mem_sum_after_init_2() == 4_877_695_371_685
+  end
 end
