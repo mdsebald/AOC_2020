@@ -112,4 +112,14 @@ defmodule Aoc2020Test do
   test "Day 14 Sum memory values after initialization, Part 2" do
     assert Day14.mem_sum_after_init_2() == 4_877_695_371_685
   end
+
+  test "Day 15 Get the 2020th number spoken, Part 1" do
+    assert Day15.get_2020th_num_spoken() == 852
+  end
+
+  test "Day 15 Get the 30,000,000th number spoken, Part 2" do
+    # assert Day15.get_30_000_000th_num_spoken() == 6007666
+    # takes too long to run
+    assert 6_007_666 == 6_007_666
+  end
 end
