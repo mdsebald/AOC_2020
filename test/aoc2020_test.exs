@@ -122,4 +122,12 @@ defmodule Aoc2020Test do
     # takes too long to run
     assert 6_007_666 == 6_007_666
   end
+
+  test "Day 16 Calculate ticket scan error rate, Part 1" do
+    assert Day16.calc_ticket_scan_error_rate() == 26988
+  end
+
+  test "Day 16 multiply your ticket's departure fields, Part 2" do
+    assert Day16.mult_your_ticket_departure_fields() == 426_362_917_709
+  end
 end
