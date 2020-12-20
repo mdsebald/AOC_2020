@@ -138,4 +138,12 @@ defmodule Aoc2020Test do
   test "Day 17, Part 2: Count active cubes 4D" do
     assert Day17.count_active_cubes_4d() == 1632
   end
+
+  test "Day 18, Part 1: Evaluate expressions" do
+    assert Day18.evaluate_expressions_1() == 280_014_646_144
+  end
+
+  test "Day 18, Part 2: Evaluate expressions" do
+    assert Day18.evaluate_expressions_2() == 9_966_990_988_262
+  end
 end
