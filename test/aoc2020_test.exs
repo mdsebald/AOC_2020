@@ -146,4 +146,12 @@ defmodule Aoc2020Test do
   test "Day 18, Part 2: Evaluate expressions" do
     assert Day18.evaluate_expressions_2() == 9_966_990_988_262
   end
+
+  test "Day 19, Part 1: Count messages that match rule 0" do
+    assert Day19.msgs_match_rule0_1() == 216
+  end
+
+  test "Day 19, Part 2: All loops to some rules and count messages that match rule 0" do
+    assert Day19.msgs_match_rule0_2() == 400
+  end
 end
