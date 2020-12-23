@@ -154,4 +154,13 @@ defmodule Aoc2020Test do
   test "Day 19, Part 2: All loops to some rules and count messages that match rule 0" do
     assert Day19.msgs_match_rule0_2() == 400
   end
+
+  test "Day 21, Part 1: Count indgredients without allergens" do
+    assert Day21.count_ingredients_wo_allergens() == 2826
+  end
+
+  test "Day 21, Part 2: List dangerous ingredients" do
+    assert Day21.dangerous_ingredients() ==
+             "pbhthx,sqdsxhb,dgvqv,csnfnl,dnlsjr,xzb,lkdg,rsvlb"
+  end
 end
