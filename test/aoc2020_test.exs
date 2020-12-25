@@ -163,4 +163,12 @@ defmodule Aoc2020Test do
     assert Day21.dangerous_ingredients() ==
              "pbhthx,sqdsxhb,dgvqv,csnfnl,dnlsjr,xzb,lkdg,rsvlb"
   end
+
+  test "Day 24, Part 1: Count black side up tiles" do
+    assert Day24.count_black_side_up_tiles() == 512
+  end
+
+  test "Day 24, Part 2: Count black side up tiles after 100 days of iteration" do
+    assert Day24.flip_tiles_100_days() == 4120
+  end
 end
