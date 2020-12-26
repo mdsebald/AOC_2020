@@ -171,4 +171,10 @@ defmodule Aoc2020Test do
   test "Day 24, Part 2: Count black side up tiles after 100 days of iteration" do
     assert Day24.flip_tiles_100_days() == 4120
   end
+
+  test "Day 25, Part 1: Find card or door encryption key, they are the same" do
+    assert Day25.find_encryption_key() == 16_881_444
+  end
+
+  # No Day 25, Part 2:
 end
