@@ -164,6 +164,14 @@ defmodule Aoc2020Test do
              "pbhthx,sqdsxhb,dgvqv,csnfnl,dnlsjr,xzb,lkdg,rsvlb"
   end
 
+  test "Day 22, Part 1: Combat card game winning score" do
+    assert Day22.winning_score_1() == 33010
+  end
+
+  test "Day 22, Part 2: Recursive Combat card game winning score" do
+    assert Day22.winning_score_2() == 32769
+  end
+
   test "Day 24, Part 1: Count black side up tiles" do
     assert Day24.count_black_side_up_tiles() == 512
   end
@@ -176,5 +184,5 @@ defmodule Aoc2020Test do
     assert Day25.find_encryption_key() == 16_881_444
   end
 
-  # No Day 25, Part 2:
+  # Day 25, Part 2: Nothing
 end
