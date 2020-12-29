@@ -118,9 +118,9 @@ defmodule Aoc2020Test do
   end
 
   test "Day 15, Part 2: Get the 30,000,000th number spoken" do
-    # assert Day15.get_30_000_000th_num_spoken() == 6007666
+    assert true
     # takes too long to run
-    assert 6_007_666 == 6_007_666
+    # assert Day15.get_30_000_000th_num_spoken() == 6_007_666
   end
 
   test "Day 16, Part 1: Calculate ticket scan error rate" do
@@ -170,6 +170,16 @@ defmodule Aoc2020Test do
 
   test "Day 22, Part 2: Recursive Combat card game winning score" do
     assert Day22.winning_score_2() == 32769
+  end
+
+  test "Day 23, Part 1: Order of the cup labels" do
+    assert Day23.cup_labels_1() == "45983627"
+  end
+
+  test "Day 23, Part 2: Order of the cup labels, 1 million cups, 10 million moves" do
+    assert true
+    # takes about a minute to run
+    # assert Day23.cup_labels_2 == 111_080_192_688
   end
 
   test "Day 24, Part 1: Count black side up tiles" do
