@@ -155,6 +155,14 @@ defmodule Aoc2020Test do
     assert Day19.msgs_match_rule0_2() == 400
   end
 
+  test "Day 20, Part 1: Find the image corner tile IDs" do
+    assert Day20.find_corner_tiles() == 18_482_479_935_793
+  end
+
+  test "Day 20, Part 2: Find the water roughness minus the sea monsters" do
+    assert Day20.find_water_roughness() == 2118
+  end
+
   test "Day 21, Part 1: Count indgredients without allergens" do
     assert Day21.count_ingredients_wo_allergens() == 2826
   end
